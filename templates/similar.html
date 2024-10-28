@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Similar Cameras to {{ camera }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Dark mode styling */
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='images/background.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        /* Container for the camera tiles */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Camera tile styling */
+        .camera-tile {
+            background-color: rgba(30, 30, 30, 0.8);
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 10px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .camera-tile h3 {
+            color: #ffffff;
+        }
+
+        .camera-tile p {
+            color: #bbbbbb;
+            margin: 5px 0;
+        }
+
+        /* Button styling */
+        .button {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        /* Tile hover effect */
+        .camera-tile:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Similar Cameras to {{ camera }}</h1>
+
+    <!-- Camera tiles -->
+    <div class="container">
+        {% for similar in similar_models %}
+            <div class="camera-tile">
+                <h3>{{ similar['Model'] }}</h3>
+                <p>Price: ${{ similar['Price'] }}</p>
+                <p>Category: {{ similar['Category'] }}</p>
+                <p>Sensor Type: {{ similar['Sensor Type'] }}</p>
+                <p>Resolution: {{ similar['Resolution (MP)'] }} MP</p>
+                <p>ISO Range: {{ similar['ISO Range'] }}</p>
+                <p>Video Resolution: {{ similar['Video Resolution'] }}</p>
+                <p>Battery Life: {{ similar['Battery Life'] }} minutes</p>
+                <p>Touchscreen: {{ similar['Touchscreen'] }}</p>
+                <p>Wi-Fi Connectivity: {{ similar['Wi-Fi Connectivity'] }}</p>
+                <p>Lens Mount: {{ similar['Lens Mount'] }}</p>
+                <p>Viewfinder Type: {{ similar['Viewfinder Type'] }}</p>
+                <p>Image Stabilization: {{ similar['Image Stabilization'] }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Go back button -->
+    <a href="/" class="button">Go Back</a>
+
+</body>
+</html>

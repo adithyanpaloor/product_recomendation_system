@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Camera Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Dark mode styling */
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='images/background.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Main content styling */
+        .content {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(30, 30, 30, 0.9);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #bbbbbb;
+            margin-bottom: 15px;
+        }
+
+        /* Features list styling */
+        ul {
+            list-style-type: square;
+            color: #e0e0e0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="/" class="active">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/help">Help</a>
+    </div>
+
+    <!-- About content -->
+    <div class="content">
+        <h1>About the Project</h1>
+        <p>This website is part of a mini project in data analysis, developed by <b>Adithyan</b>, <b>Akshy</b>, and <b>Febin</b>. The main purpose of this project is to provide users with a camera recommendation system based on data analysis techniques.</p>
+        
+        <p>The project was completed as part of the academic curriculum in the field of data analysis. The aim is to help users explore different camera models and find similar products based on their preferences.</p>
+        
+        <h2>Key Features of the Website</h2>
+        <ul>
+            <li>Camera Recommendation System using Cosine Similarity</li>
+            <li>User-friendly interface with dark mode for better user experience</li>
+            <li>Dynamic display of camera features such as resolution, ISO range, video resolution, and more</li>
+            <li>Responsive design for all device types</li>
+            <li>Search functionality for finding specific camera models</li>
+            <li>Information about each camera's technical specifications and price</li>
+        </ul>
+        
+        <p>We hope you find this website helpful in your search for the perfect camera!</p>
+    </div>
+
+</body>
+</html>

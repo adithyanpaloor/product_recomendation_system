@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Product Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Dark mode with background image */
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            background-image: url("\static\images\bg.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: rgba(30, 30, 30, 0.9); /* Transparent background */
+            overflow: hidden;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #333;
+            color: #ffffff;
+        }
+        .navbar a.active {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        /* Camera tile styles */
+        .container {
+            padding-bottom: 60px; /* Space for the footer */
+        }
+        .camera-tile {
+            background-color: rgba(30, 30, 30, 0.8); /* Transparent tile background */
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .camera-tile h3 {
+            color: #ffffff;
+        }
+        .camera-tile p {
+            color: #bbbbbb;
+        }
+        .button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: rgba(30, 30, 30, 0.9);
+            color: #e0e0e0;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            border-top: 1px solid #333;
+        }
+        .footer a {
+            color: #4caf50;
+            text-decoration: none;
+            padding: 0 10px;
+        }
+        .footer a:hover {
+            color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="/" class="active">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/help">Help</a>
+    </div>
+
+    <!-- Main content -->
+    <h1>Camera Models </h1>
+    <div class="container">
+        {% for camera in cameras %}
+            <div class="camera-tile">
+                <h3>{{ camera['Model'] }}</h3>
+                <p>Price: ${{ camera['Price'] }}</p>
+                <p>Category: {{ camera['Category'] }}</p>
+                <p>Resolution: {{ camera['Resolution (MP)'] }} MP</p>
+                <p>Weight: {{ camera['Weight'] }} g</p>
+                <p>Sensor Type: {{ camera['Sensor Type'] }}</p>
+                <p>ISO Range: {{ camera['ISO Range'] }}</p>
+                <p>Video Resolution: {{ camera['Video Resolution'] }}</p>
+                <p>Battery Life: {{ camera['Battery Life'] }} hours</p>
+                <a href="/similar/{{ camera['Model'] }}" class="button">View Similar Products</a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 ADITHYAN | AKSHAY | FEBIN . All rights reserved.</p>
+        <p>
+            <a href="/privacy-policy">Privacy Policy</a> |
+            <a href="/terms">Terms of Service</a>
+        </p>
+    </div>
+
+</body>
+</html>
